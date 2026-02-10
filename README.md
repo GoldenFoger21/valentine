@@ -1,1 +1,111 @@
-# valentine
+<!DOCTYPE html>
+<html>
+<head>
+<title>Love Me Valentine</title>
+<style>
+body {
+  background: #ffe6f0;
+  overflow: hidden;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  transition: 0.5s;
+}
+
+.box img {
+  width: 150px;
+}
+
+h2 {
+  color: #ff4d88;
+}
+
+button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yes {
+  background: #ff4d88;
+  color: white;
+}
+
+#no {
+  background: #ff99bb;
+  position: absolute;
+}
+
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="box">
+  <img id="gif" src="bubu-angry-and-dudu-gif.gif">
+  <h2 id="text">Do you love me? 💕</h2>
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 250;
+  const y = Math.random() * 150;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+
+document.getElementById("yes").onclick = () => {
+  document.getElementById("gif").src =
+  "bubu.gif";
+
+  document.getElementById("text").innerHTML = "lop u tuu😘";
+
+  document.getElementById("yes").style.display = "none";
+  document.getElementById("no").style.display = "none";
+};
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
